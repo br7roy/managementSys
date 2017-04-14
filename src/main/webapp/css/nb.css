@@ -1,0 +1,16 @@
+#title{
+    text-align:center;
+    color:slategray;
+}
+.nb_interface_r_log {
+    text-align: center;
+    /*vertical-align: middle;*/
+    top:200%;
+    left:50%;
+    margin-left:680px;
+    margin-top:320px;
+}
+h3{
+    color:cadetblue;
+    margin-right: 100px;
+}
