@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.fth</groupId>
-    <artifactId>mvc</artifactId>
+    <groupId>com.rust</groupId>
+    <artifactId>managementSys</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>mvc Maven Webapp</name>
@@ -81,16 +81,7 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.common.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.3.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.4.1</version>
-        </dependency>
+
         <!--web-->
         <dependency>
             <groupId>org.springframework</groupId>
@@ -325,8 +316,34 @@
             <version>0.9.5</version>
         </dependency>
     </dependencies>
+    <!--编译打包时包含xml文件 -->
     <build>
-        <finalName>mvc</finalName>
+        <finalName>shanghaiNb Emp Management System</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Ignore-Scanning-Archives>WEB-INF/lib/mybatis-3.3.1.jar</Ignore-Scanning-Archives>
+                            <Ignore-Scanning-Packages>org.apache.ibatis.javassist</Ignore-Scanning-Packages>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 

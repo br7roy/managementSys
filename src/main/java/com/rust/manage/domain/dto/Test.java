@@ -1,4 +1,4 @@
-package com.fth.domain.dto;
+package com.rust.manage.domain.dto;
 
 public class Test {
     private String id;

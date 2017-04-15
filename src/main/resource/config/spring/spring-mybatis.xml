@@ -20,45 +20,48 @@
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
 
-    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+
+    <!-- 使用annotation自动注册bean，并保证@Required，@Autowired的属性被注入 -->
+    <context:annotation-config />
+    <context:component-scan base-package="com.rust.manage" />
+
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:config/datasource.properties" />
+
+
+
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-        <property name="username" value="root"/>
-        <property name="password" value="root"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/test"/>
-        <property name="initialSize" value="50"/>
-        <property name="minIdle" value="10"/>
+        <property name="username" value="${jdbc.name}" />
+        <property name="password" value="${jdbc.pwd}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <!-- 配置初始化大小、最小、最大 -->
+        <property name="initialSize" value="1" />
+        <property name="minIdle" value="1" />
+        <property name="maxActive" value="20" />
+        <!-- 配置获取连接等待超时的时间 -->
+        <property name="maxWait" value="60000" />
+
+        <!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000" />
+
+        <!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+        <property name="minEvictableIdleTimeMillis" value="300000" />
+        <property name="validationQuery" value="SELECT 'x'" />
+        <property name="testWhileIdle" value="true" />
+        <property name="testOnBorrow" value="false" />
+        <property name="testOnReturn" value="false" />
 
     </bean>
 
-    <!-- 引入缓存的配置文件properties -->
-    <bean
-            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="ignoreResourceNotFound" value="true" />
-        <property name="ignoreUnresolvablePlaceholders" value="true" />
-        <property name="locations">
-            <list>
-                <!-- 此位置是相对于:部署后的项目根路径 -->
-                <value>/config/datasource.properties</value>
-                <!-- 此位置是相对于:文件直接在src 目录下 -->
-                <!-- <value>classpath*:cache.properties</value> -->
-                <!-- 此位置是相对于:文件在目录下面 -->
-                <!-- <value>classpath*:cache/cache.properties</value> -->
-                <!--<value>classpath*:cache/cache.properties</value>-->
-                <!-- 此位置是从服务器环境变量中查找名为：XXX 的值(例如：file:D:/test/test.properties) -->
-                <!-- <value>${XXX}</value> -->
-                <!-- 此位置是相对于:文件系统 -->
-                <!-- <value>file:D:/test/test.properties</value> -->
-            </list>
-        </property>
-    </bean>
     <!-- sessionFactory -->
     <bean id="sqlSessionFactory"
           class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource"
                   ref="dataSource"/>
         <property name="mapperLocations"
-                  value="classpath:com/fth/domain/mapping/*Mapper.xml"/>
-        <property name="typeAliasesPackage" value="com.fth.domain.dto"/>
+                  value="classpath*:com/rust/manage/domain/mapping/*.xml"/>
+        <property name="typeAliasesPackage" value="com.rust.manage.domain.dto"/>
         <!--pageHelper 分页插件-->
         <property name="plugins">
             <array>
@@ -78,9 +81,9 @@
     </bean>
 
     <!-- 添加扫描映射文件包的位置-->
-    <bean id="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.fth.domain.mapper"/>
-        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.rust.manage.domain.mapper"/>
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 
     <!--添加 session模版-->

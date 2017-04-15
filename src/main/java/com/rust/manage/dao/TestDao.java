@@ -4,9 +4,9 @@
 * Author:   fth
 * Date:     2017/4/15 21:56
 */
-package com.fth.dao;
+package com.rust.manage.dao;
 
-import com.fth.domain.dto.Test;
+import com.rust.manage.domain.dto.Test;
 
 /**
  * FileName:    TestDao

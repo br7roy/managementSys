@@ -1,10 +1,10 @@
 /*
-* Package com.fth.process 
+* Package com.fth.process
 * FileName: FooBaseDao
 * Author:   fth
 * Date:     2017/4/15 22:02
 */
-package com.fth.process;
+package com.rust.manage.process;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
@@ -17,14 +17,24 @@ import javax.annotation.Resource;
  * Date:        2017/4/15
  * Description:
  */
-public class FooBaseDao extends SqlSessionDaoSupport {
+public abstract class FooBaseDao<F> extends SqlSessionDaoSupport {
     public FooBaseDao() {
     }
 
+//    @Autowired
+//    @Override
+//    public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
+//        super.setSqlSessionTemplate(sqlSessionTemplate);
+//    }
 
     @Resource(name = "sqlSessionFactory")
     @Override
     public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
         super.setSqlSessionFactory(sqlSessionFactory);
     }
+
+//    protected <F> F getMapper(Class<F> fClass) {
+//        return getSqlSession().getMapper(fClass);
+//    }
+
 }

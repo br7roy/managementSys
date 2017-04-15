@@ -4,12 +4,12 @@
 * Author:   fth
 * Date:     2017/4/15 21:57
 */
-package com.fth.dao.impl;
+package com.rust.manage.dao.impl;
 
-import com.fth.dao.TestDao;
-import com.fth.domain.dto.Test;
-import com.fth.domain.mapper.TestMapper;
-import com.fth.process.FooBaseDao;
+import com.rust.manage.dao.TestDao;
+import com.rust.manage.domain.dto.Test;
+import com.rust.manage.domain.mapper.TestMapper;
+import com.rust.manage.process.FooBaseDao;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -18,9 +18,11 @@ import org.springframework.stereotype.Repository;
  * Date:        2017/4/15
  * Description:
  */
-@Repository("testDaoImpl")
+@Repository
 public class TestDaoImpl extends FooBaseDao implements TestDao {
     private Class<TestMapper> testMapperClass = TestMapper.class;
+
+
     @Override
     public Test selectByPrimaryKey(String id) {
         return getSqlSession().getMapper(testMapperClass).selectByPrimaryKey(id);

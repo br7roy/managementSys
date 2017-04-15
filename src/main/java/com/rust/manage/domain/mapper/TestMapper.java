@@ -1,7 +1,8 @@
-package com.fth.domain.mapper;
+package com.rust.manage.domain.mapper;
 
 
-import com.fth.domain.dto.Test;
+import com.rust.manage.domain.dto.Test;
+import org.apache.ibatis.annotations.Param;
 
 public interface TestMapper {
     int deleteByPrimaryKey(String id);
@@ -10,7 +11,7 @@ public interface TestMapper {
 
     int insertSelective(Test record);
 
-    Test selectByPrimaryKey(String id);
+    Test selectByPrimaryKey(@Param("id") String id);
 
     int updateByPrimaryKeySelective(Test record);
 
