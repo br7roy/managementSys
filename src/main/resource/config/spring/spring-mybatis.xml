@@ -25,19 +25,39 @@
         <property name="username" value="root"/>
         <property name="password" value="root"/>
         <property name="url" value="jdbc:mysql://localhost:3306/test"/>
-        <property name="maxActive" value="50"/>
         <property name="initialSize" value="50"/>
         <property name="minIdle" value="10"/>
 
     </bean>
 
+    <!-- 引入缓存的配置文件properties -->
+    <bean
+            class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="true" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <!-- 此位置是相对于:部署后的项目根路径 -->
+                <value>/config/datasource.properties</value>
+                <!-- 此位置是相对于:文件直接在src 目录下 -->
+                <!-- <value>classpath*:cache.properties</value> -->
+                <!-- 此位置是相对于:文件在目录下面 -->
+                <!-- <value>classpath*:cache/cache.properties</value> -->
+                <!--<value>classpath*:cache/cache.properties</value>-->
+                <!-- 此位置是从服务器环境变量中查找名为：XXX 的值(例如：file:D:/test/test.properties) -->
+                <!-- <value>${XXX}</value> -->
+                <!-- 此位置是相对于:文件系统 -->
+                <!-- <value>file:D:/test/test.properties</value> -->
+            </list>
+        </property>
+    </bean>
     <!-- sessionFactory -->
     <bean id="sqlSessionFactory"
           class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource"
                   ref="dataSource"/>
         <property name="mapperLocations"
-                  value="classpath:com/fth/domain/mapper/DemonMapper.xml"/>
+                  value="classpath:com/fth/domain/mapping/*Mapper.xml"/>
         <property name="typeAliasesPackage" value="com.fth.domain.dto"/>
         <!--pageHelper 分页插件-->
         <property name="plugins">
