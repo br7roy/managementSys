@@ -26,7 +26,8 @@
 
 
     <!--开启注解扫描-->
-    <context:component-scan base-package="com.fth"/>
+    <context:annotation-config />
+    <context:component-scan base-package="com.rust.manage" />
 
     <!-- MVC注解驱动 -->
     <bean id="asyncThreadPool"
@@ -46,5 +47,9 @@
             <!-- </mvc:callable-interceptors> -->
         </mvc:async-support>
     </mvc:annotation-driven>
+
+    <!-- 解决No mapping found for HTTP request with URI-->
+    <!-- 防止jsp请求被拦截器拦截-->
+    <!--<mvc:default-servlet-handler/>-->
 
 </beans>

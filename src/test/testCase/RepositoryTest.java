@@ -5,7 +5,7 @@
 * Date:     2017/4/16 9:51
 */
 
-import com.rust.manage.dao.impl.TestDaoImpl;
+import com.rust.manage.dao.TestDao;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -31,7 +31,7 @@ public class RepositoryTest {
 
     @Test
     public void test() {
-        TestDaoImpl testDao = applicationContext.getBean("testDaoImpl", TestDaoImpl.class);
+        TestDao testDao = applicationContext.getBean("testDao", TestDao.class);
         com.rust.manage.domain.dto.Test test = testDao.selectByPrimaryKey("1");
         System.out.println(test.getName());
 

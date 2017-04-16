@@ -12,13 +12,13 @@ import org.mybatis.spring.support.SqlSessionDaoSupport;
 import javax.annotation.Resource;
 
 /**
- * FileName:    FooBaseDao
+ * FileName:    RustBaseDao
  * Author:      Br7roy
  * Date:        2017/4/15
  * Description:
  */
-public abstract class FooBaseDao<F> extends SqlSessionDaoSupport {
-    public FooBaseDao() {
+public abstract class RustBaseDao<F> extends SqlSessionDaoSupport {
+    public RustBaseDao() {
     }
 
 //    @Autowired

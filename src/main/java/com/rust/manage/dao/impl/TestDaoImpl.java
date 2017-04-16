@@ -9,17 +9,17 @@ package com.rust.manage.dao.impl;
 import com.rust.manage.dao.TestDao;
 import com.rust.manage.domain.dto.Test;
 import com.rust.manage.domain.mapper.TestMapper;
-import com.rust.manage.process.FooBaseDao;
+import com.rust.manage.process.RustBaseDao;
 import org.springframework.stereotype.Repository;
 
 /**
- * FileName:    TestDaoImpl
+ * FileName:    RustBaseDao
  * Author:      Br7roy
  * Date:        2017/4/15
  * Description:
  */
 @Repository
-public class TestDaoImpl extends FooBaseDao implements TestDao {
+public class TestDaoImpl extends RustBaseDao implements TestDao {
     private Class<TestMapper> testMapperClass = TestMapper.class;
 
 

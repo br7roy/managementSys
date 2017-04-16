@@ -1,11 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
+
+<html title="上海南博贸易有限公司">
 <head>
-    <meta charset="UTF-8">
-    <title>上海南博贸易有限公司员工管理平台</title>
-    <style>
-        @import "../css/nb.css";
-    </style>
+<title>上海南博贸易有限公司</title>
+    <script src="js/jquery-1.4.3.js"></script>
+    <script src="js/login.js"></script>
+    <%--<style type="text/css">--%>
+        <%--@import "css/nb.css";--%>
+    <%--</style>--%>
+    <link rel="stylesheet" href="css/nb.css">
 </head>
 <body>
 <!--顶部-->
@@ -24,30 +27,31 @@
         <div class="title" id="title">
             <h1>上海南博贸易有限公司员工管理平台</h1>
         </div>
-        <div class="nb_interface_r_log fr" >
+        <div class="nb_interface_r_log fr">
             <div class="interface_info_log" >
-                <h3 >帐号登录</h3>
+                <h3>帐号登录</h3>
                 <p class="user_log_info"></p>
                 <div class="quc-main_log">
-                    <form class="quc-form_log" id="log_form" method="post" enctype="multipart/form-data"
-                          onsubmit="do_login();return false;">
+                    <form class="quc-form_log" id="log_form" method="post">
                         <p class="user_log">
                             <span class="pep_log f1"></span>
                             <span class="pep_text_log f1">
                                  <input type="text" maxlength="20" id="user_name" name="user_name" placeholder="用户名" autocomplete="off">
                             </span>
+                            <span class="error" id="user_name_msg"></span>
                         </p>
                         <p class="pwd_log">
                             <span class="pwd_log f1"></span>
                             <span class="pwd_text_log f1">
                                 <input type="password" id="password" name="password" placeholder="登录密码" autocomplete="off">
                             </span>
+                            <span class="error" id="password_msg"></span>
                         </p>
                         <p class="info_log">
-                            <a class="forget_info_log f1" title="忘记密码？" href="main.html">忘记密码？</a>
+                            <a class="forget_info_log f1" title="忘记密码？" href="html/forgetPwd.html">忘记密码？</a>
                         </p>
                         <p class="nb_next_log">
-                            <input class="sub_log" type="submit" value="登录" id="login_btn">
+                            <input class="sub_log" type="button" value="&nbsp登&nbsp录&nbsp" id="login_btn">
                         </p>
                     </form>
                 </div>
