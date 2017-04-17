@@ -22,6 +22,36 @@ public class LoginResponse extends CommonResponse {
     private String id;
     private Cookie cookie;
 
+    @Override
+    public String getResponseMsg() {
+        return super.getResponseMsg();
+    }
+
+    @Override
+    public void setResponseMsg(String responseMsg) {
+        super.setResponseMsg(responseMsg);
+    }
+
+    @Override
+    public String getResponseCode() {
+        return super.getResponseCode();
+    }
+
+    @Override
+    public void setResponseCode(String responseCode) {
+        super.setResponseCode(responseCode);
+    }
+
+    @Override
+    public Object getObjData() {
+        return super.getObjData();
+    }
+
+    @Override
+    public void setObjData(Object objData) {
+        super.setObjData(objData);
+    }
+
     public String getUserAcct() {
         return userAcct;
     }
@@ -44,6 +74,9 @@ public class LoginResponse extends CommonResponse {
 
     public void setCookie(Cookie cookie) {
         this.cookie = cookie;
+    }
+
+    public LoginResponse() {
     }
 
     public LoginResponse(String userAcct, String id, Cookie cookie) {

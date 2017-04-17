@@ -18,4 +18,6 @@ public interface UserInfoDao {
     UserInfo getUserInfo(String acct, String loginPwd);
 
     int saveUserInfo(UserInfo userInfo);
+
+    int updateUserInfo(UserInfo userInfo);
 }

@@ -1,7 +1,7 @@
 <%@page pageEncoding="UTF-8" contentType="text/html; charset=UTF-8" %>
-
 <html title="上海南博贸易有限公司">
 <head>
+
 <title>上海南博贸易有限公司</title>
     <script src="js/jquery-1.4.3.js"></script>
     <script src="js/login.js"></script>
@@ -32,7 +32,7 @@
                 <h3>帐号登录</h3>
                 <p class="user_log_info"></p>
                 <div class="quc-main_log">
-                    <form class="quc-form_log" id="log_form" method="post">
+                    <form class="quc-form_log" id="log_form" method="post" onsubmit="do_login();return false;">
                         <p class="user_log">
                             <span class="pep_log f1"></span>
                             <span class="pep_text_log f1">
@@ -51,7 +51,7 @@
                             <a class="forget_info_log f1" title="忘记密码？" href="html/forgetPwd.html">忘记密码？</a>
                         </p>
                         <p class="nb_next_log">
-                            <input class="sub_log" type="button" value="&nbsp登&nbsp录&nbsp" id="login_btn">
+                            <input class="sub_log" type="submit" value="&nbsp登&nbsp录&nbsp" id="login_btn">
                         </p>
                     </form>
                 </div>

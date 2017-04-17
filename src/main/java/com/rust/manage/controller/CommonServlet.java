@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * FileName: ${NAME}
+ * FileName: CommonServlet
  * Author:   Br7roy
  * Date:     2017/4/17
  * Description:
@@ -40,6 +40,8 @@ public class CommonServlet {
         if (Objects.equals(loginResponse.getResponseCode(), Constant.respCode.SUCCESS_CODE)) {
             response.addCookie(loginResponse.getCookie());
         }
-        return loginService.checkLoginInfo(name, pwd);
+        logger.info("---------------->检验账户处理结束<----------------");
+        return loginResponse;
     }
+
 }
