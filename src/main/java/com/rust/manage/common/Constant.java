@@ -13,6 +13,7 @@ package com.rust.manage.common;
  * Description:
  */
 public class Constant {
+    public static final String UTF_8_ENCODING = "UTF-8";
     public static String cookie = "cookie";
 
     public interface respCode {

@@ -35,7 +35,7 @@ function loginAction() {
                 setCookie(USER_ID, user.id);
 
                 window.location.href='edit.html';
-                return;
+
             }
 
         },
@@ -66,7 +66,7 @@ function do_login() {
                 setCookie(USER_ID, user.id);
 
                 window.location.href='edit.html';
-                return;
+
             }
 
         },

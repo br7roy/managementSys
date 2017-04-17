@@ -6,12 +6,12 @@
 */
 package com.rust.manage.service.Impl;
 
-import com.rust.data.verify.RustDataVerifyUtil;
 import com.rust.manage.common.Constant;
 import com.rust.manage.dao.UserInfoDao;
 import com.rust.manage.domain.dto.UserInfo;
 import com.rust.manage.domain.response.LoginResponse;
 import com.rust.manage.service.LoginService;
+import com.rust.util.verify.RustDataVerifyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -37,9 +37,9 @@ public class LoginServiceImpl implements LoginService {
 
         logger.info("--------------->this is checkLoginService<-------------");
 
-//        if (RustDataVerifyUtil.isEmpty(name) || RustDataVerifyUtil.isEmpty(pwd)) {
-//            return new LoginResponse(Constant.respCode.ERROR_CODE, Constant.respMsg.login_fail);
-//        }
+        if (RustDataVerifyUtil.isEmpty(name) || RustDataVerifyUtil.isEmpty(pwd)) {
+            return new LoginResponse(Constant.respCode.ERROR_CODE, Constant.respMsg.login_fail);
+        }
 
         logger.info("--------------->参数校验通过<--------------");
 
