@@ -11,7 +11,6 @@ import com.rust.manage.dao.UserInfoDao;
 import com.rust.manage.domain.dto.UserInfo;
 import com.rust.manage.domain.response.LoginResponse;
 import com.rust.manage.service.LoginService;
-import com.rust.util.message.RustFastJsonUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -53,7 +52,7 @@ public class LoginServiceImpl implements LoginService {
         if (isBlank(name) || isBlank(pwd)) {
             loginResponse.setResponseCode(Constant.respCode.ERROR_CODE);
             loginResponse.setResponseMsg(Constant.respMsg.login_error);
-            logger.info("返回登录响应：" + RustFastJsonUtil.tojson(loginResponse));
+//            logger.info("返回登录响应：" + RustFastJsonUtil.tojson(loginResponse));
             return loginResponse;
         }
 

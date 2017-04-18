@@ -26,7 +26,7 @@
 
 
 
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" lazy-init="true">
         <property name="driverClassName" value="${jdbc.driver}"/>
         <property name="username" value="${jdbc.name}" />
         <property name="password" value="${jdbc.pwd}"/>
