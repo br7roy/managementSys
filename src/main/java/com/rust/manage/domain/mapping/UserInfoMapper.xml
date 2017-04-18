@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.rust.manage.domain.mapper.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.rust.manage.domain.dto.UserInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="acct_name" property="acctName" jdbcType="VARCHAR" />
+    <result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
+      <result column="token" property="token" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, acct_name, login_password, token
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from user_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.rust.manage.domain.dto.UserInfo" >
+    insert into user_info (id, acct_name, login_password, token
+      )
+    values (#{id,jdbcType=INTEGER}, #{acctName,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.rust.manage.domain.dto.UserInfo" >
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="acctName != null" >
+        acct_name,
+      </if>
+      <if test="loginPassword != null" >
+        login_password,
+      </if>
+        <if test="token != null" >
+            token,
+        </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="acctName != null" >
+        #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null" >
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+        <if test="token != null" >
+            #{token,jdbcType=VARCHAR},
+        </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.rust.manage.domain.dto.UserInfo" >
+    update user_info
+    <set >
+      <if test="acctName != null" >
+        acct_name = #{acctName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null" >
+        login_password = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+        <if test="token != null" >
+            token = #{token,jdbcType=VARCHAR},
+        </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.rust.manage.domain.dto.UserInfo" >
+    update user_info
+    set acct_name = #{acctName,jdbcType=VARCHAR},
+      login_password = #{loginPassword,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="selectByAcctPwd" resultMap="BaseResultMap" parameterType="map" >
+        select
+        <include refid="Base_Column_List" />
+        from user_info
+        where acct_name = #{acctName,jdbcType=VARCHAR}
+        AND login_password = #{loginPassword,jdbcType=VARCHAR}
+    </select>
+
+</mapper>
