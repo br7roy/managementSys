@@ -6,18 +6,20 @@
 */
 package com.rust.manage.service.Impl;
 
+import java.util.UUID;
+
+import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
 import com.rust.manage.common.Constant;
 import com.rust.manage.dao.UserInfoDao;
 import com.rust.manage.domain.dto.UserInfo;
 import com.rust.manage.domain.response.LoginResponse;
 import com.rust.manage.service.LoginService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
-import javax.servlet.http.Cookie;
-import java.util.UUID;
 
 /**
  * FileName:    LoginServiceImpl
@@ -52,7 +54,7 @@ public class LoginServiceImpl implements LoginService {
         if (isBlank(name) || isBlank(pwd)) {
             loginResponse.setResponseCode(Constant.respCode.ERROR_CODE);
             loginResponse.setResponseMsg(Constant.respMsg.login_error);
-//            logger.info("返回登录响应：" + RustFastJsonUtil.tojson(loginResponse));
+            //logger.info("返回登录响应：" + RustFastJsonUtil.tojson(loginResponse));
             return loginResponse;
         }
 
